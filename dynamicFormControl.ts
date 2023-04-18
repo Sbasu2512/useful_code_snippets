@@ -1,5 +1,20 @@
  //here we are creating a data object for every new form value recieved and creating a formControl.
  mainFunction() {
+  const formValues = this.createJobForm.value;
+    const eventTypeSeleceted = formValues?.eventTypes
+      ? formValues.eventTypes[0]
+      : null;
+    const equipmentSelected = formValues?.equipmentTypes
+      ? formValues.equipmentTypes[0]
+      : null;
+    const locationSelected = formValues?.locations
+      ? formValues.locations[0]
+      : null;
+    const statusSelected = formValues?.statuses ? formValues.statuses[0] : null;
+    const fromLocationSelected = formValues?.fromLocation
+      ? formValues.fromLocation[0]
+      : null;
+  
   const data: EventSequenceModel = {
       sequenceId: this.incrementSequence(),
       event: this.getEventDetails(eventTypeSeleceted),
