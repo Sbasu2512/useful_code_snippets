@@ -1,0 +1,367 @@
+<div class="col p-0">
+                <!-- createJobForm -->
+                <form [formGroup]="createJobForm">
+                  <ng-container>
+                    <div>
+                      <table class="text-left w-100">
+                        <thead>
+                          <tr>
+                            <th class="w-15">
+                              <label for="eventTypes" class="lbl-title"
+                                >Event *</label
+                              >
+                            </th>
+                            <th class="w-15">
+                              <label for="eventTypes" class="lbl-title"
+                                >Equipment Type</label
+                              >
+                            </th>
+                            <th class="w-15">
+                              <label for="eventTypes" class="lbl-title"
+                                >Status</label
+                              >
+                            </th>
+                            <th>
+                              <label for="eventTypes" class="lbl-title"
+                                >Location *</label
+                              >
+                            </th>
+                          </tr>
+                        </thead>
+                        <!-- second row for repeat -->
+                        <tbody>
+                          <tr
+                            *ngFor="
+                              let data of jobDataFormControl;
+                              let i = index;
+                              last as isLast
+                            "
+                            [formGroup]="data"
+                          >
+                            <td class="w-15">
+                              <!-- eventType -->
+                              <div class="mr-2">
+                                <igx-combo
+                                  appComboItemWithTooltip
+                                  appOpenOnFocus
+                                  [itemsMaxHeight]="250"
+                                  [data]="eventTypes"
+                                  [displayKey]="'eventType'"
+                                  [valueKey]="'eventTypeId'"
+                                  [formControlName]="'eventTypes' + i"
+                                  [searchPlaceholder]="
+                                    'Enter a eventType to search'
+                                  "
+                                  (selectionChanging)="
+                                    changeValue($event, 'eventTypes', i + 1)
+                                  "
+                                  class="mt-n2"
+                                >
+                                  <!-- This required to hide the empty list message -->
+                                  <ng-template igxComboEmpty></ng-template>
+                                </igx-combo>
+                              </div>
+                            </td>
+                            <!-- equipment Type -->
+                            <ng-container
+                              *ngIf="
+                                jobData[i].event.eventType.toLowerCase() !==
+                                  'Bobtail Move'.toLowerCase();
+                                else elseTemplate
+                              "
+                            >
+                              <td class="w-25">
+                                <div class="mr-2">
+                                  <igx-combo
+                                    appComboItemWithTooltip
+                                    appOpenOnFocus
+                                    [itemsMaxHeight]="250"
+                                    [data]="equipmentTypes"
+                                    [displayKey]="'equipmentType'"
+                                    [valueKey]="'equipmentTypeId'"
+                                    [searchPlaceholder]="
+                                      'Enter a equipmentTypes to search'
+                                    "
+                                    (selectionChanging)="
+                                      changeValue(
+                                        $event,
+                                        'equipmentTypes',
+                                        i + 1
+                                      )
+                                    "
+                                    [formControlName]="'equipmentTypes' + i"
+                                    class="mt-n2"
+                                  >
+                                    <!-- This required to hide the empty list message -->
+                                    <ng-template igxComboEmpty></ng-template>
+                                  </igx-combo>
+                                </div>
+                              </td>
+                            </ng-container>
+                            <!-- from Location -->
+                            <ng-template #elseTemplate>
+                              <td class="w-25">
+                                <div class="mr-2">
+                                  <igx-combo
+                                    appComboItemWithTooltip
+                                    appOpenOnFocus
+                                    [itemsMaxHeight]="250"
+                                    [data]="fromLocations"
+                                    [displayKey]="'locationName'"
+                                    [valueKey]="'locationId'"
+                                    [formControlName]="'fromLocation' + i"
+                                    [searchPlaceholder]="
+                                      'Enter a location to search'
+                                    "
+                                    (selectionChanging)="
+                                      changeValue($event, 'fromLocation', i + 1)
+                                    "
+                                    class="mt-n2"
+                                  >
+                                    <ng-template igxComboEmpty></ng-template>
+                                  </igx-combo>
+                                </div>
+                              </td>
+                            </ng-template>
+                            <!-- status -->
+                            <td class="w-20">
+                              <div
+                                class="mr-2"
+                                *ngIf="
+                                  jobData[i].event.eventType.toLowerCase() !==
+                                  'Bobtail Move'.toLowerCase()
+                                "
+                              >
+                                <igx-combo
+                                  appComboItemWithTooltip
+                                  appOpenOnFocus
+                                  [itemsMaxHeight]="250"
+                                  [data]="status"
+                                  [displayKey]="'name'"
+                                  [valueKey]="'id'"
+                                  [formControlName]="'statuses' + i"
+                                  (selectionChanging)="
+                                    changeValue($event, 'statuses', i + 1)
+                                  "
+                                  [searchPlaceholder]="
+                                    'Enter a status to search'
+                                  "
+                                  class="mt-n2"
+                                >
+                                  <!-- This required to hide the empty list message -->
+                                  <ng-template igxComboEmpty></ng-template>
+                                </igx-combo>
+                              </div>
+                            </td>
+                            <!-- location -->
+                            <td>
+                              <div class="mr-2">
+                                <igx-combo
+                                  appComboItemWithTooltip
+                                  appOpenOnFocus
+                                  [itemsMaxHeight]="250"
+                                  [data]="locations"
+                                  [displayKey]="'locationName'"
+                                  [valueKey]="'locationId'"
+                                  [formControlName]="'locations' + i"
+                                  (selectionChanging)="
+                                    changeValue($event, 'locations', i + 1)
+                                  "
+                                  [searchPlaceholder]="
+                                    'Enter a location to search'
+                                  "
+                                  class="mt-n2"
+                                >
+                                  <!-- This required to hide the empty list message -->
+                                  <ng-template igxComboEmpty></ng-template>
+                                </igx-combo>
+                              </div>
+                            </td>
+                            <td *ngIf="isLast" (click)="deleteEvent(i + 1)">
+                              <button class="no-border">
+                                <i class="fas fa-trash-alt delete-button"></i>
+                              </button>
+                            </td>
+                          </tr>
+
+                          <!--! actual form rows  -->
+                          <tr>
+                            <th>
+                              <!-- eventType -->
+                              <div class="mr-2">
+                                <igx-combo
+                                  appComboItemWithTooltip
+                                  appOpenOnFocus
+                                  [itemsMaxHeight]="250"
+                                  [data]="eventTypes"
+                                  [displayKey]="'eventType'"
+                                  [valueKey]="'eventTypeId'"
+                                  formControlName="eventTypes"
+                                  [searchPlaceholder]="
+                                    'Enter a eventType to search'
+                                  "
+                                  (selectionChanging)="
+                                    onEventTypeSelection($event)
+                                  "
+                                  class="mt-n2"
+                                >
+                                  <!-- This required to hide the empty list message -->
+                                  <ng-template igxComboEmpty></ng-template>
+                                </igx-combo>
+                              </div>
+                            </th>
+                            <th>
+                              <ng-container
+                                *ngIf="
+                                  !isBobtailEventSelected;
+                                  else elseTemplate
+                                "
+                              >
+                                <!-- equipment type -->
+                                <div class="mr-2">
+                                  <igx-combo
+                                    appComboItemWithTooltip
+                                    appOpenOnFocus
+                                    [itemsMaxHeight]="250"
+                                    [data]="equipmentTypes"
+                                    [displayKey]="'equipmentType'"
+                                    [valueKey]="'equipmentTypeId'"
+                                    formControlName="equipmentTypes"
+                                    [searchPlaceholder]="
+                                      'Enter a equipmentTypes to search'
+                                    "
+                                    (selectionChanging)="
+                                      handleSingleSelection($event)
+                                    "
+                                    class="mt-n2"
+                                  >
+                                    <!-- This required to hide the empty list message -->
+                                    <ng-template igxComboEmpty></ng-template>
+                                  </igx-combo>
+                                </div>
+                              </ng-container>
+                              <!-- fromLocation -->
+                              <ng-template #elseTemplate>
+                                <div>
+                                  <igx-combo
+                                    appComboItemWithTooltip
+                                    appOpenOnFocus
+                                    [itemsMaxHeight]="250"
+                                    [data]="locations"
+                                    [displayKey]="'locationName'"
+                                    [valueKey]="'locationId'"
+                                    formControlName="fromLocation"
+                                    [searchPlaceholder]="
+                                      'Enter a location to search'
+                                    "
+                                    (selectionChanging)="
+                                      handleSingleSelection($event)
+                                    "
+                                    class="mt-n2"
+                                  >
+                                    <!-- This required to hide the empty list message -->
+                                    <ng-template igxComboEmpty></ng-template>
+                                  </igx-combo>
+                                </div>
+                              </ng-template>
+                            </th>
+                            <th>
+                              <div class="mr-2" *ngIf="!isBobtailEventSelected">
+                                <igx-combo
+                                  appComboItemWithTooltip
+                                  appOpenOnFocus
+                                  [itemsMaxHeight]="250"
+                                  [data]="status"
+                                  [displayKey]="'name'"
+                                  [valueKey]="'id'"
+                                  formControlName="statuses"
+                                  [searchPlaceholder]="
+                                    'Enter a status to search'
+                                  "
+                                  (selectionChanging)="
+                                    handleSingleSelection($event)
+                                  "
+                                  class="mt-n2"
+                                >
+                                  <!-- This required to hide the empty list message -->
+                                  <ng-template igxComboEmpty></ng-template>
+                                </igx-combo>
+                              </div>
+                            </th>
+                            <th>
+                              <div class="mr-2">
+                                <igx-combo
+                                  appComboItemWithTooltip
+                                  appOpenOnFocus
+                                  [itemsMaxHeight]="250"
+                                  [data]="locations"
+                                  [displayKey]="'locationName'"
+                                  [valueKey]="'locationId'"
+                                  formControlName="locations"
+                                  [searchPlaceholder]="
+                                    'Enter a location to search'
+                                  "
+                                  (selectionChanging)="
+                                    handleSingleSelection($event)
+                                  "
+                                  class="mt-n2"
+                                >
+                                  <!-- This required to hide the empty list message -->
+                                  <ng-template igxComboEmpty></ng-template>
+                                </igx-combo>
+                              </div>
+                            </th>
+                            <th>
+                              <div>
+                                <button
+                                  [disabled]="!this.createJobForm.valid"
+                                  (click)="addJob()"
+                                  class="no-border"
+                                >
+                                  <i
+                                    class="fas fa-plus-circle"
+                                    [ngClass]="[
+                                      this.createJobForm.valid
+                                        ? 'blue'
+                                        : 'disabled-btn'
+                                    ]"
+                                  ></i>
+                                </button>
+                              </div>
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </ng-container>
+                  <div class="row mt-lg-2">
+                <div
+                  class="
+                    col
+                    container-fluid-inline-flex
+                    align-items-center
+                    justify-content-end
+                    sticky-buttons
+                  "
+                >
+                  <button
+                    igxButton="raised"
+                    igxRipple
+                    class="mr-1"
+                    (click)="submit()"
+                    [disabled]="!this.createJobsForm.valid"
+                  >
+                    <span appUndrLn>S</span>AVE
+                  </button>
+                  <button
+                    igxButton="raised"
+                    igxRipple
+                    class="m-0"
+                    (click)="cancel()"
+                  >
+                    CANCEL
+                  </button>
+                </div>
+              </div>
+                </form>
+              </div>
