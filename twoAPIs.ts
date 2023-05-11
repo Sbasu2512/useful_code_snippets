@@ -13,7 +13,7 @@
           if (res.status === ResponseStatus.Success && res.result) {
             jobId = res.result;
           }
-          const requests = payload.eventSequence.map((event) => {
+          const requests = payload.eventSequence.map((event:any) => {
             return this.saveJobDef(event, jobId);
           });
           return forkJoin(requests);
