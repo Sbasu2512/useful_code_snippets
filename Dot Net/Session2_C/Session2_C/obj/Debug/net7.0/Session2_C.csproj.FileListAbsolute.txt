@@ -1,0 +1,15 @@
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/bin/Debug/net7.0/Session2_C
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/bin/Debug/net7.0/Session2_C.deps.json
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/bin/Debug/net7.0/Session2_C.runtimeconfig.json
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/bin/Debug/net7.0/Session2_C.dll
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/bin/Debug/net7.0/Session2_C.pdb
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.csproj.AssemblyReference.cache
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.AssemblyInfoInputs.cache
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.AssemblyInfo.cs
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.csproj.CoreCompileInputs.cache
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.dll
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/refint/Session2_C.dll
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.pdb
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/Session2_C.genruntimeconfig.cache
+/Users/sayantanbasu/Dot Net/C#/Session2_C/Session2_C/obj/Debug/net7.0/ref/Session2_C.dll

@@ -1,0 +1,10 @@
+namespace Division{
+    internal class Divide{
+        static void Main(string[] args){
+            convertNumberToTime(number){
+                Timespan t = Timespan.FromSeconds(number);
+                Console.WriteLine("t" + t);
+            }
+        }
+    }
+}

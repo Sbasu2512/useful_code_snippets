@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{3764F001-58CE-4811-8D3E-C3BCC870A11B}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Session2__C PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Session2_C/Homework1.cs">
+    <Files>
+      <File FileName="Session2_C/Homework2.cs" Line="25" Column="50" />
+      <File FileName="Session2_C/Homework1.cs" Line="45" Column="14" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Session2_C" expanded="True" selected="True">
+            <Node name="Session2_C" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
